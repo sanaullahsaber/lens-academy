@@ -1,0 +1,44 @@
+ [
+  {
+    "id": 1,
+    "name": "Bryan Peterson",
+    "photo": "https://bpsop.com/wp-content/uploads/2015/06/bryanpeterson.jpg",
+    "classSize": 50,
+    "specialist": "Understanding Composition: Beyond the Basics, Understanding Color, Understanding Close Up Photography, Photographing People: Anytime, Anyplace, Anywhere"
+  },
+  {
+    "id": 2,
+    "name": "Athena Carey",
+    "photo": "https://bpsop.com/wp-content/uploads/2015/06/acarey.jpg",
+    "classSize": 40,
+    "specialist": "Black and White Fine Art Photography"
+  },
+  {
+    "id": 3,
+    "name": "Beth Ruggiero-York",
+    "photo": "https://bpsop.com/wp-content/uploads/2015/08/beth.jpg",
+    "classSize": 35,
+    "specialist": "Long Exposure Photography, Fun in the Dark: Getting Started with Night Photography,"
+  },
+  {
+    "id": 4,
+    "name": "George Crudo",
+    "photo": "https://bpsop.com/wp-content/uploads/2015/06/gcrudo.jpg",
+    "classSize": 60,
+    "specialist": "Food Photography Au Naturel"
+  },
+  {
+    "id": 5,
+    "name": "Joe Baraban",
+    "photo": "https://bpsop.com/wp-content/uploads/2015/06/jbaraban.jpg",
+    "classSize": 55,
+    "specialist": "Stretching Your Frame of Mind & Stretching Your Frame of Mind, Part II, The Use of Gestalt in Photography"
+  },
+  {
+    "id": 6,
+    "name": "Jon Canfield",
+    "photo": "https://bpsop.com/wp-content/uploads/2019/10/IMG_1420_1-217x300.jpg",
+    "classSize": 45,
+    "specialist": "Mastering Apple Photos, Luminar Essentials"
+  }
+]

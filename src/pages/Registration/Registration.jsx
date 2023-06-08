@@ -102,12 +102,13 @@ const Registration = () => {
                     name="name"
                     placeholder="Name"
                     className="input input-bordered"
+                    required
                   />
                 </div>
                 {/* photo field */}
                 <div className="form-control">
                   {" "}
-                  {/* 02:06:04 / 04:11:40 */}
+                  
                   <label className="label">
                     <span className="label-text">Photo URL</span>
                   </label>
@@ -116,9 +117,9 @@ const Registration = () => {
                     name="photo"
                     placeholder="Photo URL"
                     className="input input-bordered"
+                    required
                   />
                 </div>
-                {/* 02:43:42 / 04:11:4 */}
                 {/* email field */}
                 <div className="form-control">
                   <label className="label">
@@ -159,6 +160,7 @@ const Registration = () => {
                     value={confirmPassword}
                     onChange={(event) => setConfirmPassword(event.target.value)}
                     className="input input-bordered"
+                    required
                   />
                 </div>
                 {/* Alert for password mismatch */}
