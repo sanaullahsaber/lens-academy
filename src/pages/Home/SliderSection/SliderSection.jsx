@@ -49,7 +49,7 @@ const SliderSection = () => {
 
   return (
     <>
-      <div ref={sliderRef} className="keen-slider my-2">
+      <div ref={sliderRef} className="keen-slider mt-2">
         <div className="keen-slider__slide number-slide1">
           <img className="w-full" src={img1} alt="" />
         </div>
