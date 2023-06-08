@@ -6,17 +6,21 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Registration = () => {
-  const { createUser } = useContext(AuthContext);
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('')
-   const navigate = useNavigate();
-   const location = useLocation();
-   console.log("login page location", location);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const [name, setName] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log("login page location", location);
   const from = location.state?.from?.pathname || "/";
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const handleCreateAnAccount = event => {
+
+  const handleCreateAnAccount = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -55,13 +59,19 @@ const Registration = () => {
       .then((result) => {
         const createUser = result.user;
         console.log(createUser);
-        navigate(from, { replace: true });
+
+        updateUserProfile(name, photo)
+          .then(() => {
+            navigate(from, { replace: true });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
-      console.log(error);
-    })
-    
-  }
+        console.log(error);
+      });
+  };
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -94,9 +104,10 @@ const Registration = () => {
                     className="input input-bordered"
                   />
                 </div>
-
                 {/* photo field */}
                 <div className="form-control">
+                  {" "}
+                  {/* 02:06:04 / 04:11:40 */}
                   <label className="label">
                     <span className="label-text">Photo URL</span>
                   </label>
@@ -107,7 +118,7 @@ const Registration = () => {
                     className="input input-bordered"
                   />
                 </div>
-
+                {/* 02:43:42 / 04:11:4 */}
                 {/* email field */}
                 <div className="form-control">
                   <label className="label">
@@ -121,7 +132,6 @@ const Registration = () => {
                     required
                   />
                 </div>
-
                 {/* password field */}
                 <div className="form-control">
                   <label className="label">
@@ -137,7 +147,6 @@ const Registration = () => {
                     required
                   />
                 </div>
-
                 {/* confirm password field */}
                 <div className="form-control">
                   <label className="label">
@@ -152,12 +161,10 @@ const Registration = () => {
                     className="input input-bordered"
                   />
                 </div>
-
                 {/* Alert for password mismatch */}
                 {password !== confirmPassword && (
                   <div style={{ color: "red" }}>Passwords do not match</div>
                 )}
-
                 <div className="form-control mt-6">
                   <input
                     type="Submit"

@@ -49,7 +49,7 @@ const Login = () => {
         Swal.fire({
           position: "top-end",
           icon: "error",
-          title: "Password must be at least 6 characters long.",
+          title: "Something Wrong Check the Email & Password",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -67,6 +67,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        toast.error(err.message);
     })
   };
 

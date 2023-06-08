@@ -7,11 +7,7 @@ import MenuDropdown from "./MenuDropdown";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
-  const handleLogOut = () => {
-    logOut()
-      .then()
-      .catch((error) => console.log(error));
-  };
+  
 
   const navOptions = (
     <>

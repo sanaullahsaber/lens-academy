@@ -10,6 +10,11 @@ const MenuDropdown = () => {
     // const toggleOpen = useCallback(() => {
     //   setIsOpen(value => !value)
     // }, [])
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
@@ -33,7 +38,7 @@ const MenuDropdown = () => {
           <div className="flex flex-col cursor-pointer">
             {user ? (
               <div
-                onClick={logOut}
+                onClick={handleLogOut}
                 className="px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer"
               >
                 Logout
