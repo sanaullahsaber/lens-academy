@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
+
   const navOptions = (
     <>
       <li className="text-blue-900 text-xl font-semibold">
@@ -13,9 +22,9 @@ const Navbar = () => {
       <li className="text-blue-900 text-xl font-semibold">
         <Link to="/"> Classes</Link>
       </li>
-      <li className="text-blue-900 text-xl font-semibold">
+      {user ?<li className="text-blue-900 text-xl font-semibold">
         <Link to="/">Dashboard</Link>
-      </li>
+      </li>: ""}
     </>
   );
 
@@ -47,16 +56,36 @@ const Navbar = () => {
               {navOptions}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-blue-900 text-xl">
+          <Link
+            to="/"
+            className="btn btn-ghost normal-case text-blue-900 text-xl"
+          >
             Lens Academy
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Login</a>
-        </div>
+        {user ? (
+          <div className="navbar-end flex items-center">
+            {user.photoURL && (
+              <img
+                className="w-10 h-10 rounded-full mr-2"
+                src={user.photoURL}
+                alt="User Profile"
+              />
+            )}
+            <Link onClick={handleLogOut} to="/login" className="btn text-blue-900 text-xl font-semibold">
+              Logout
+            </Link>
+          </div>
+        ) : (
+          <div className="navbar-end">
+            <Link to="/login" className="btn text-blue-900 text-xl font-semibold">
+              Login
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
