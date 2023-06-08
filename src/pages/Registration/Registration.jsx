@@ -12,7 +12,9 @@ const Registration = () => {
    const navigate = useNavigate();
    const location = useLocation();
    console.log("login page location", location);
-   const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleCreateAnAccount = event => {
     event.preventDefault();
@@ -23,6 +25,20 @@ const Registration = () => {
     const password = form.password.value;
 
     console.log(name, photo, email, password);
+
+    if (!/(?=.*[A-Z])/.test(password)) {
+      setError("Please add at least one uppercase");
+      return;
+    } else if (!/(?=.*[0-9].*[0-9])/.test(password)) {
+      setError("Please add at least two numbers");
+      return;
+    } else if (!/(?=.*[!@#$%^&*])/.test(password)) {
+      setError("Please add at least one special character");
+      return;
+    } else if (password.length < 6) {
+      setError("Please add at least 6 character in your password");
+      return;
+    }
 
     if (password !== confirmPassword) {
       Swal.fire({
@@ -102,6 +118,7 @@ const Registration = () => {
                     name="email"
                     placeholder="email"
                     className="input input-bordered"
+                    required
                   />
                 </div>
 
@@ -117,6 +134,7 @@ const Registration = () => {
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                     className="input input-bordered"
+                    required
                   />
                 </div>
 
@@ -157,6 +175,8 @@ const Registration = () => {
                   </Link>
                 </div>
               </form>
+              <p className="text-error">{error}</p>
+              <p className="text-success">{success}</p>
             </div>
           </div>
         </div>
