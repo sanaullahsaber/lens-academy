@@ -1,9 +1,52 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import loginAnimationLottie from "../../assets/LoginPage/132033-green-login.json";
 import Lottie from "lottie-react";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Registration = () => {
+  const { createUser } = useContext(AuthContext);
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('')
+   const navigate = useNavigate();
+   const location = useLocation();
+   console.log("login page location", location);
+   const from = location.state?.from?.pathname || "/";
+
+  const handleCreateAnAccount = event => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(name, photo, email, password);
+
+    if (password !== confirmPassword) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Password's do not match",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        const createUser = result.user;
+        console.log(createUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+      console.log(error);
+    })
+    
+  }
+
   return (
     <div className="max-w-7xl mx-auto">
       <div className="hero min-h-screen">
@@ -17,10 +60,12 @@ const Registration = () => {
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <div>
-              <h1 className="text-2xl text-center font-bold">Create an account now!</h1>
+              <h1 className="text-2xl text-center font-bold">
+                Create an account now!
+              </h1>
             </div>
             <div className="card-body">
-              <form >
+              <form onSubmit={handleCreateAnAccount}>
                 {/* Name field */}
                 <div className="form-control">
                   <label className="label">
@@ -28,8 +73,21 @@ const Registration = () => {
                   </label>
                   <input
                     type="text"
-                    name="text"
+                    name="name"
                     placeholder="Name"
+                    className="input input-bordered"
+                  />
+                </div>
+
+                {/* photo field */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Photo URL</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="photo"
+                    placeholder="Photo URL"
                     className="input input-bordered"
                   />
                 </div>
@@ -47,8 +105,6 @@ const Registration = () => {
                   />
                 </div>
 
-
-
                 {/* password field */}
                 <div className="form-control">
                   <label className="label">
@@ -58,6 +114,8 @@ const Registration = () => {
                     type="password"
                     name="password"
                     placeholder="password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
                     className="input input-bordered"
                   />
                 </div>
@@ -65,33 +123,40 @@ const Registration = () => {
                 {/* confirm password field */}
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Password</span>
+                    <span className="label-text">Confirm Password</span>
                   </label>
                   <input
                     type="password"
-                    name="password"
-                    placeholder="password"
+                    name="confirmPassword"
+                    placeholder="confirm Password"
+                    value={confirmPassword}
+                    onChange={(event) => setConfirmPassword(event.target.value)}
                     className="input input-bordered"
                   />
                 </div>
 
-
+                {/* Alert for password mismatch */}
+                {password !== confirmPassword && (
+                  <div style={{ color: "red" }}>Passwords do not match</div>
+                )}
 
                 <div className="form-control mt-6">
                   <input
                     type="Submit"
-                    value="Login"
+                    value="Create an account"
+                    disabled={password !== confirmPassword}
                     className="btn bg-[#487eb0]"
                   />
                 </div>
                 <div className="my-2">
-                  <span className="font-semibold">Already have an account?</span>
+                  <span className="font-semibold">
+                    Already have an account?
+                  </span>
                   <Link to="/login" className="text-[#487eb0] font-semibold ">
                     Login
                   </Link>
                 </div>
               </form>
-              
             </div>
           </div>
         </div>
