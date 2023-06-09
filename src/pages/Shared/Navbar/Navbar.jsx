@@ -15,7 +15,7 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li className="text-blue-900 text-xl font-semibold">
-        <Link to="/">Instructors</Link>
+        <Link to="/instructors">Instructors</Link>
       </li>
       <li className="text-blue-900 text-xl font-semibold">
         <Link to="/"> Classes</Link>

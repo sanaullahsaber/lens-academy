@@ -1,44 +1,122 @@
- [
+[
   {
-    "id": 1,
     "name": "Bryan Peterson",
     "photo": "https://bpsop.com/wp-content/uploads/2015/06/bryanpeterson.jpg",
-    "classSize": 50,
-    "specialist": "Understanding Composition: Beyond the Basics, Understanding Color, Understanding Close Up Photography, Photographing People: Anytime, Anyplace, Anywhere"
+    "enrolled": 50,
+    "specialist": "Understanding Composition: Beyond the Basics, Understanding Color, Understanding Close Up Photography, Photographing People: Anytime, Anyplace, Anywhere",
+    "mail": "bryanfpeterson@mac.com"
   },
   {
-    "id": 2,
     "name": "Athena Carey",
     "photo": "https://bpsop.com/wp-content/uploads/2015/06/acarey.jpg",
-    "classSize": 40,
-    "specialist": "Black and White Fine Art Photography"
+    "enrolled": 40,
+    "specialist": "Black and White Fine Art Photography",
+    "mail" : "athenacarey@mail.com"
   },
   {
-    "id": 3,
     "name": "Beth Ruggiero-York",
     "photo": "https://bpsop.com/wp-content/uploads/2015/08/beth.jpg",
-    "classSize": 35,
-    "specialist": "Long Exposure Photography, Fun in the Dark: Getting Started with Night Photography,"
+    "enrolled": 35,
+    "specialist": "Long Exposure Photography, Fun in the Dark: Getting Started with Night Photography,",
+    "mail" : "RuggieroImages@yahoo.com"
   },
   {
-    "id": 4,
+    "name": "Brit Hammer",
+    "photo": "https://bpsop.com/wp-content/uploads/2020/07/brit_hammer-150x150.jpg",
+    "enrolled": 48,
+    "specialist": "Beautiful Black & White, Finding Beauty",
+    "mail": "brithammer@gmail.com"
+  },
+  {
+    "name": "Charlie Borland",
+    "photo": "https://bpsop.com/wp-content/uploads/2015/06/charlieborland2.jpg",
+    "enrolled": 53,
+    "specialist": "for Architecture & Real Estate, Outdoor Photography , The Ultimate Guide to Landscape & Nature Photography, Commercial Photography",
+    "mail" : "borlandphoto@hotmail.com"
+  },
+  {
     "name": "George Crudo",
     "photo": "https://bpsop.com/wp-content/uploads/2015/06/gcrudo.jpg",
-    "classSize": 60,
-    "specialist": "Food Photography Au Naturel"
+    "enrolled": 60,
+    "specialist": "Food Photography Au Naturel",
+    "mail": "georgeCrudo@gmail.com"
   },
   {
-    "id": 5,
+    "name": "Holly Higbee-Jansen",
+    "photo": "https://bpsop.com/wp-content/uploads/2022/12/Holly-06024-300x200.jpeg",
+    "enrolled": 34,
+    "specialist": "iPhone Photography , Lightroom QuickStart, Exploring Adobe Photoshop Lightroom & Lightroom for Mobile",
+    "mail" : " mark@markjansenphotography.com"
+  },
+  {
     "name": "Joe Baraban",
     "photo": "https://bpsop.com/wp-content/uploads/2015/06/jbaraban.jpg",
-    "classSize": 55,
-    "specialist": "Stretching Your Frame of Mind & Stretching Your Frame of Mind, Part II, The Use of Gestalt in Photography"
+    "enrolled": 55,
+    "specialist": "Stretching Your Frame of Mind & Stretching Your Frame of Mind, Part II, The Use of Gestalt in Photography",
+    "mail": "joebaraban@mail.com"
   },
   {
-    "id": 6,
     "name": "Jon Canfield",
     "photo": "https://bpsop.com/wp-content/uploads/2019/10/IMG_1420_1-217x300.jpg",
-    "classSize": 45,
-    "specialist": "Mastering Apple Photos, Luminar Essentials"
+    "enrolled": 45,
+    "specialist": "Mastering Apple Photos, Luminar Essentials",
+    "mail" : "jon@canfield.com"
+  },
+
+  {
+    "name": "Kerry Drager",
+    "photo": "https://bpsop.com/wp-content/uploads/2017/10/Kerry_Drager-300x217.jpg",
+    "enrolled": 52,
+    "specialist": "Understanding Composition, Understanding Composition: Beyond the Basics",
+    "mail": "kerry@drager.com"
+  },
+  {
+    "name": "Mark English",
+    "photo": "https://bpsop.com/wp-content/uploads/2015/06/menglish.jpg",
+    "enrolled": 36,
+    "specialist": "The Art of Printing and Selling Your Art & After the Click – Refining Your Vision in Lightroom & Camera Raw, Understanding Close-Up Photography",
+    "mail" : "mark@english.com"
+  },
+  {
+    "name": "Monika Banas",
+    "photo": "https://bpsop.com/wp-content/uploads/2019/07/monika-profile-new-1.jpg",
+    "enrolled": 46,
+    "specialist": "Photographing Flora & Creative Portrait",
+    "mail": "info@pixien.com."
+  },
+  {
+    "name": "Patrik Banas",
+    "photo": "https://bpsop.com/wp-content/uploads/2019/06/patrik-profile-new.jpg",
+    "enrolled": 88,
+    "specialist": "Photographing Flora",
+    "mail": "patrikbanas.com"
+  },
+  {
+    "name": "Rick Burress",
+    "photo": "https://bpsop.com/wp-content/uploads/2020/09/RickBurress-241x300.jpg",
+    "enrolled": 22,
+    "specialist": "The Real Photoshop Course, The Ultimate Guide to Adobe Bridge CC, Editing in Adobe Camera Raw",
+    "mail" : "patrik@banas.com"
+  },
+  {
+    "name": "Roger Morin",
+    "photo": "https://bpsop.com/wp-content/uploads/2015/08/roger.jpg",
+    "enrolled": 92,
+    "specialist": "The 50 Most Useful Tips in Photoshop CC  & 50 MORE Photoshop Tips",
+    "mail" : "rick@artistec.com"
+  },
+  {
+    "name": "Scott Stulberg",
+    "photo": "https://bpsop.com/wp-content/uploads/2015/06/sstulberg.jpg",
+    "enrolled": 30,
+    "specialist": "Eye to Eye: Capturing the Face",
+    "mail" : "achilles@morin.com"
+  },
+  {
+    "name": "William Yu",
+    "photo": "https://bpsop.com/wp-content/uploads/2015/05/williamyu2.png",
+    "enrolled": 20,
+    "specialist": "Photographers Guide to Travel Photography",
+    "mail": "william@williamyuphotography.com"
   }
 ]

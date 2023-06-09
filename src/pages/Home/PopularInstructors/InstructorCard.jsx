@@ -1,7 +1,7 @@
 import React from "react";
 
 const InstructorCard = ({ instructor }) => {
-  const { name, photo, classSize, specialist } = instructor;
+  const { name, photo, enrolled, specialist } = instructor;
   return (
     <div className="col-span-1 cursor-pointer group">
       <div className="flex flex-col gap-2 w-full">
@@ -16,8 +16,9 @@ const InstructorCard = ({ instructor }) => {
         >
           <img
             className="
-              object-cover
+              
               w-full
+              h-full
               group-hover:scale-110 
               transition
             "
@@ -33,9 +34,13 @@ const InstructorCard = ({ instructor }) => {
           ></div>
         </div>
         <div className="font-semibold text-lg">{name}</div>
-        <div className=""><strong>Instructor for:</strong> {specialist}</div>
+        <div className="">
+          <strong>Instructor for:</strong> {specialist}
+        </div>
         <div className="flex flex-row items-center gap-1">
-          <div className="font-semibold"><strong>Student Enrolled:</strong> { classSize}</div>
+          <div className="font-semibold">
+            <strong>Student Enrolled:</strong> {enrolled}
+          </div>
         </div>
       </div>
     </div>
