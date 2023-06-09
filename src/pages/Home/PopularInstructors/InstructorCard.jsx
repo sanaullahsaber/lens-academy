@@ -35,7 +35,7 @@ const InstructorCard = ({ instructor }) => {
         <div className="font-semibold text-lg">{name}</div>
         <div className=""><strong>Instructor for:</strong> {specialist}</div>
         <div className="flex flex-row items-center gap-1">
-          <div className="font-semibold"><strong>Lessons:</strong> { classSize}</div>
+          <div className="font-semibold"><strong>Student Enrolled:</strong> { classSize}</div>
         </div>
       </div>
     </div>
