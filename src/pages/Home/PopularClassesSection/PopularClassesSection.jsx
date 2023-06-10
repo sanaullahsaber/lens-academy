@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ClassCard from "./ClassCard";
 
 const PopularClassesSection = () => {
   const [classes, setClasses] = useState([]);
@@ -11,7 +12,7 @@ const PopularClassesSection = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/classes?sort=${sortingOrder}`)
+    fetch(`${import.meta.env.VITE_API_URL}/classes?sort=${sortingOrder}`)
       .then((res) => res.json())
       .then((data) => {
         setClasses(data);
@@ -44,19 +45,9 @@ const PopularClassesSection = () => {
       </div>
       <div className="grid md:grid-cols-3 gap-4">
         {classes.map((course) => (
-          <div key={course._id} className="p-2">
-            <div className="bg-white rounded-lg shadow-md h-full flex flex-col">
-              <img
-                className="w-full h-40 object-cover rounded-t-lg"
-                src={course.image}
-                
-              />
-              <div className="p-4 flex-grow">
-                <h2 className="text-lg font-bold mb-2">{course.title}</h2>
-                <p className="text-gray-500">{course.students} students</p>
-              </div>
-            </div>
-          </div>
+          <ClassCard key={course._id}
+            course={course}
+          ></ClassCard>
         ))}
       </div>
     </div>

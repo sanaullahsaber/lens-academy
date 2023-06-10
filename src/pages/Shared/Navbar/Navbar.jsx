@@ -20,9 +20,13 @@ const Navbar = () => {
       <li className="text-blue-900 text-xl font-semibold">
         <Link to="/"> Classes</Link>
       </li>
-      {user ?<li className="text-blue-900 text-xl font-semibold">
-        <Link to="/">Dashboard</Link>
-      </li>: ""}
+      {user ? (
+        <li className="text-blue-900 text-xl font-semibold">
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      ) : (
+        ""
+      )}
     </>
   );
 

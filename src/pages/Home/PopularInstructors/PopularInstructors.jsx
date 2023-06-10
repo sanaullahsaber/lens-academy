@@ -12,7 +12,7 @@ const PopularInstructors = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch(`http://localhost:5000/instructors?sort=${sortingOption}`)
+    fetch(`${import.meta.env.VITE_API_URL}/instructors?sort=${sortingOption}`)
       .then((res) => res.json())
       .then((data) => {
         setInstructors(data);

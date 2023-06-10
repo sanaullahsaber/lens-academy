@@ -5,6 +5,9 @@ import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import Home from "../pages/Home/Home/Home";
 import InstructorsPage from "../pages/InstructorsPage/InstructorsPage";
+import Dashboard from "../Layout/Dashboard";
+import AddStudent from "../pages/Dashboard/AddStudent/AddStudent";
+import MySelectedCourse from "../pages/Dashboard/MySelectedCourse/MySelectedCourse";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/instructors",
-        element: <InstructorsPage></InstructorsPage>
+        element: <InstructorsPage></InstructorsPage>,
       },
       {
         path: "login",
@@ -27,6 +30,20 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: <Registration></Registration>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "add-student",
+        element: <AddStudent></AddStudent>,
+      },
+      {
+        path: "my-selected-course",
+        element: <MySelectedCourse></MySelectedCourse> 
       },
     ],
   },

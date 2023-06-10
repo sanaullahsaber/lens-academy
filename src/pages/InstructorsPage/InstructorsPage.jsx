@@ -5,7 +5,7 @@ const InstructorsPage = () => {
   const [allInstructors, setAllInstructors] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/all-instructors")
+    fetch(`${import.meta.env.VITE_API_URL}/all-instructors`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data); // Check the response data

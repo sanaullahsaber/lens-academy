@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
+import { saveUser } from '../../api/auth';
 
 const Registration = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -62,6 +63,7 @@ const Registration = () => {
 
         updateUserProfile(name, photo)
           .then(() => {
+            saveUser(result.user)
             navigate(from, { replace: true });
           })
           .catch((error) => {

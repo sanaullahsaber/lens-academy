@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { saveUser } from "../../api/auth";
 const Login = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        saveUser(result.user);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -63,6 +65,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        saveUser(result.user);
         navigate(from, { replace: true });
       })
       .catch((error) => {

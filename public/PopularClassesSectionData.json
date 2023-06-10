@@ -2,38 +2,211 @@
   {
     "title": "Digital Photography for Beginners Courses",
     "students": 700,
-    "image":
-      "https://www.city-academy.com/staticresources/uploads/images/bg/photography-for-beginners-courses.jpg"
+    "instructor": "Bryan Peterson",
+    "seats": 10,
+    "price": 139,
+    "image": "https://www.city-academy.com/staticresources/uploads/images/bg/photography-for-beginners-courses.jpg"
   },
   {
     "title": "Documentary Photography Courses",
     "students": 600,
-    "image":
-      "https://www.city-academy.com/staticresources/uploads/1676970406.png"
+    "instructor": "Athena Carey",
+    "seats": 15,
+    "price": 200,
+    "image": "https://www.city-academy.com/staticresources/uploads/1676970406.png"
   },
   {
     "title": "Studio Lighting for Photography Courses",
     "students": 550,
-    "image":
-      "https://www.city-academy.com/staticresources/uploads/images/bg/1582-1572429947.jpg"
+    "instructor": "Beth Ruggiero-York",
+    "seats": 12,
+    "price": 185,
+    "image": "https://www.city-academy.com/staticresources/uploads/images/bg/1582-1572429947.jpg"
   },
   {
     "title": "Product Photography Techniques",
     "students": 500,
-    "image":
-      "https://www.city-academy.com/staticresources/uploads/1628187056.png"
+    "instructor": "Brit Hammer",
+    "seats": 5,
+    "price": 150,
+    "image": "https://www.city-academy.com/staticresources/uploads/1628187056.png"
   },
   {
     "title": "Wildlife Photography Courses",
     "students": 450,
-    "image":
-      "https://www.city-academy.com/staticresources/uploads/1637603652.jpg"
+    "instructor": "Charlie Borland",
+    "seats": 20,
+    "price": 195,
+    "image": "https://www.city-academy.com/staticresources/uploads/1637603652.jpg"
   },
   {
     "title": "Black & White Photography Courses",
     "students": 400,
-    "image":
-      "https://www.city-academy.com/staticresources/uploads/1628187017.png"
+    "instructor": "George Crudo",
+    "seats": 17,
+    "price": 188,
+    "image": "https://www.city-academy.com/staticresources/uploads/1628187017.png"
+  },
+
+  {
+    "title": "Photography 5 Day Foundation",
+    "students": 430,
+    "instructor": "Holly Higbee-Jansen",
+    "seats": 27,
+    "price": 178,
+    "image": "https://www.city-academy.com/staticresources/uploads/1660226247.jpg"
+  },
+
+  {
+    "title": "Portrait Photography Courses",
+    "students": 200,
+    "instructor": "Joe Baraban",
+    "seats": 6,
+    "price": 118,
+    "image": "https://www.city-academy.com/staticresources/uploads/1653584393.jpg"
+  },
+
+  {
+    "title": "London Street Photography Courses",
+    "students": 100,
+    "instructor": "Jon Canfield",
+    "seats": 37,
+    "price": 288,
+    "image": "https://www.city-academy.com/staticresources/uploads/1676913868.png"
+  },
+
+  {
+    "title": "Fine Art Photography Courses",
+    "students": 50,
+    "instructor": "Kerry Drager",
+    "seats": 3,
+    "price": 388,
+    "image": "https://www.city-academy.com/staticresources/uploads/images/bg/1580-1572258601.png"
+  },
+
+  {
+    "title": "Food Photography Courses",
+    "students": 40,
+    "instructor": "Mark English",
+    "seats": 57,
+    "price": 234,
+    "image": "https://www.city-academy.com/staticresources/uploads/images/bg/0-1572427341.png"
+  },
+
+  {
+    "title": "Fashion Photography Courses",
+    "students": 320,
+    "instructor": "Monika Banas",
+    "seats": 54,
+    "price": 350,
+    "image": "https://www.city-academy.com/staticresources/uploads/1684933603.png"
+  },
+
+  {
+    "title": "Lightroom Courses for Photographers ",
+    "students": 110,
+    "instructor": "Patrik Banas",
+    "seats": 45,
+    "price": 195,
+    "image": "https://www.city-academy.com/staticresources/uploads/images/bg/1587-1572437790.png"
+  },
+
+  {
+    "title": "Photoshop Courses for Photography",
+    "students": 220,
+    "instructor": "Rick Burress",
+    "seats": 30,
+    "price": 320,
+    "image": "https://www.city-academy.com/staticresources/uploads/images/bg/801-1572431076.png"
+  },
+
+  {
+    "title": "Product Photography Courses",
+    "students": 153,
+    "instructor": "Roger Morin",
+    "seats": 44,
+    "price": 215,
+    "image": "https://www.city-academy.com/staticresources/uploads/1653584396.jpg"
+  },
+
+  {
+    "title": "Night Photography Courses",
+    "students": 400,
+    "instructor": "Scott Stulberg",
+    "seats": 5,
+    "price": 155,
+    "image": "https://www.city-academy.com/staticresources/uploads/1628187056.png"
+  },
+
+  {
+    "title": "Intermediate Digital Photography Courses",
+    "students": 340,
+    "instructor": "William Yu",
+    "seats": 20,
+    "price": 188,
+    "image": "https://www.city-academy.com/staticresources/uploads/1653584361.jpg"
+  },
+
+  {
+    "title": "Speedlite (Off Camera) Photography Classes",
+    "students": 90,
+    "instructor": "Bryan Peterson",
+    "seats": 10,
+    "price": 100,
+    "image": "https://www.city-academy.com/staticresources/uploads/1628187085.png"
+  },
+
+  {
+    "title": "Long Exposure Photography Courses",
+    "students": 70,
+    "instructor": "Athena Carey",
+    "seats": 30,
+    "price": 277,
+    "image": "https://www.city-academy.com/staticresources/uploads/1653584377.jpg"
+  },
+
+  {
+    "title": "Macro Photography Courses",
+    "students": 50,
+    "instructor": "Beth Ruggiero-York",
+    "seats": 40,
+    "price": 275,
+    "image": "https://www.city-academy.com/staticresources/uploads/1637603545.jpg"
+  },
+
+  {
+    "title": "Photography Summer School",
+    "students": 60,
+    "instructor": "Brit Hammer",
+    "seats": 4,
+    "price": 182,
+    "image": "https://www.city-academy.com/staticresources/uploads/images/bg/1188-1560964849.jpg"
+  },
+
+  {
+    "title": "Wedding Photography Courses",
+    "students": 230,
+    "instructor": "Charlie Borland",
+    "seats": 23,
+    "price": 134,
+    "image": "https://www.city-academy.com/staticresources/uploads/1653558442.jpg"
+  },
+
+  {
+    "title": "Long Term Photography Courses",
+    "students": 557,
+    "instructor": "George Crudo",
+    "seats": 21,
+    "price": 56,
+    "image": "https://www.city-academy.com/staticresources/uploads/1653575374.jpg"
+  },
+
+  {
+    "title": "Cinematography Courses",
+    "students": 420,
+    "instructor": "George Crudo",
+    "seats": 88,
+    "price": 400,
+    "image": "https://www.city-academy.com/staticresources/uploads/images/bg/963-1582629227.png"
   }
 ]
-
