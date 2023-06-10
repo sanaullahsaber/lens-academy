@@ -4,33 +4,33 @@ import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const MySelectedCourse = () => {
-  const [bookedCourse] = useSelected();
+  const [bookedCourse, refetch] = useSelected();
   console.log(bookedCourse);
 
-  // const handleDelete = (item) => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       fetch(`${import.meta.env.VITE_API_URL}/booked-course/${item._id}`, {
-  //         method: "DELETE",
-  //       })
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           if (data.deletedCount > 0) {
-  //             refetch();
-  //             Swal.fire("Deleted!", "Your file has been deleted.", "success");
-  //           }
-  //         });
-  //     }
-  //   });
-  // };
+  const handleDelete = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`${import.meta.env.VITE_API_URL}/booked-course/${item._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -79,7 +79,7 @@ const MySelectedCourse = () => {
                 </td>
                 <td>
                   <button
-                    // onClick={() => handleDelete(item)}
+                    onClick={() => handleDelete(item)}
                     className="btn btn-ghost bg-blue-400  text-white"
                   >
                     Pay

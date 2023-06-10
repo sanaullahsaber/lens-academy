@@ -11,6 +11,7 @@ const ClassCard = ({ course }) => {
   const [, refetch] = useSelected();
   const navigate = useNavigate();
   const location = useLocation();
+  
 
   const handleSelect = (course) => {
     console.log(course);
