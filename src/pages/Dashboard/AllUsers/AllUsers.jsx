@@ -77,9 +77,9 @@ const AllUsers = () => {
               <th>#</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Role</th>
               <th>Admin</th>
               <th>Instructor</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -88,6 +88,7 @@ const AllUsers = () => {
                 <th>{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
+                <td>{user.role || "student"}</td>
                 <td>
                   {user.role === "admin" ? (
                     "admin"
