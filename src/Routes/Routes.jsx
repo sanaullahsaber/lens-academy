@@ -6,10 +6,10 @@ import Registration from "../pages/Registration/Registration";
 import Home from "../pages/Home/Home/Home";
 import InstructorsPage from "../pages/InstructorsPage/InstructorsPage";
 import Dashboard from "../Layout/Dashboard";
-import AddStudent from "../pages/Dashboard/AddStudent/AddStudent";
 import MySelectedCourse from "../pages/Dashboard/MySelectedCourse/MySelectedCourse";
 import Payment from "../pages/Dashboard/MySelectedCourse/Payment";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import AddClass from "../pages/Dashboard/AddClass/AddClass";
 
 
 const router = createBrowserRouter([
@@ -41,10 +41,6 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path: "add-student",
-        element: <AddStudent></AddStudent>,
-      },
-      {
         path: "my-selected-course",
         element: <MySelectedCourse></MySelectedCourse>,
       },
@@ -55,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "admin-manage-users",
         element: <AllUsers></AllUsers>,
+      },
+      {
+        path: "add-class",
+        element: <AddClass></AddClass>,
       },
     ],
   },

@@ -9,37 +9,14 @@ const AllUsers = () => {
     return res.json();
   });
 
-  const [disabledAdminButtonId, setDisabledAdminButtonId] = useState(null);
-  const [disabledInstructorButtonId, setDisabledInstructorButtonId] =
-    useState(null);
+  const [btnDisabledMap, setBtnDisabledMap] = useState({});
 
-  useEffect(() => {
-    const disabledAdminButtonIdFromStorage = localStorage.getItem(
-      "disabledAdminButtonId"
-    );
-    const disabledInstructorButtonIdFromStorage = localStorage.getItem(
-      "disabledInstructorButtonId"
-    );
-
-    setDisabledAdminButtonId(disabledAdminButtonIdFromStorage);
-    setDisabledInstructorButtonId(disabledInstructorButtonIdFromStorage);
-  }, []);
-
-  const handleMakeRole = (user, role) => {
-    if (role === "admin") {
-      setDisabledAdminButtonId(user._id);
-      setDisabledInstructorButtonId(null);
-      localStorage.setItem("disabledAdminButtonId", user._id);
-      localStorage.removeItem("disabledInstructorButtonId");
-    } else if (role === "instructor") {
-      setDisabledInstructorButtonId(user._id);
-      setDisabledAdminButtonId(null);
-      localStorage.setItem("disabledInstructorButtonId", user._id);
-      localStorage.removeItem("disabledAdminButtonId");
-    }
-
-    const updatedUser = { ...user, role };
-    fetch(`${import.meta.env.VITE_API_URL}/users/${role}/${user._id}`, {
+  const handleMakeAdmin = (user) => {
+    setBtnDisabledMap((prevBtnDisabledMap) => ({
+      ...prevBtnDisabledMap,
+      [user._id]: true,
+    }));
+    fetch(`${import.meta.env.VITE_API_URL}/users/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -47,22 +24,48 @@ const AllUsers = () => {
         console.log(data);
         if (data.modifiedCount) {
           refetch();
-          let title;
-          if (role === "admin") {
-            title = `${user.name} is now an admin!`;
-          } else {
-            title = `${user.name} is now an instructor!`;
-          }
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: title,
+            title: `${user.name} is an Admin Now!`,
             showConfirmButton: false,
             timer: 1500,
           });
         }
+        setBtnDisabledMap((prevBtnDisabledMap) => ({
+          ...prevBtnDisabledMap,
+          [user._id]: false,
+        }));
       });
   };
+
+ const handleMakeInstructor = (user) => {
+   setBtnDisabledMap((prevBtnDisabledMap) => ({
+     ...prevBtnDisabledMap,
+     [user._id]: true,
+   }));
+   fetch(`${import.meta.env.VITE_API_URL}/users/instructor/${user._id}`, {
+     method: "PATCH",
+   })
+     .then((res) => res.json())
+     .then((data) => {
+       console.log(data);
+       if (data.modifiedCount) {
+         refetch();
+         Swal.fire({
+           position: "top-end",
+           icon: "success",
+           title: `${user.name} is now an Instructor!`,
+           showConfirmButton: false,
+           timer: 1500,
+         });
+       }
+       setBtnDisabledMap((prevBtnDisabledMap) => ({
+         ...prevBtnDisabledMap,
+         [user._id]: false,
+       }));
+     });
+ };
 
   return (
     <div>
@@ -94,8 +97,8 @@ const AllUsers = () => {
                     "admin"
                   ) : (
                     <button
-                      onClick={() => handleMakeRole(user, "admin")}
-                      disabled={user._id === disabledAdminButtonId}
+                      onClick={() => handleMakeAdmin(user)}
+                      disabled={btnDisabledMap[user._id]}
                       className="btn btn-ghost bg-gray-500 text-white"
                     >
                       <FaUserShield></FaUserShield>Make Admin
@@ -107,18 +110,13 @@ const AllUsers = () => {
                     "instructor"
                   ) : (
                     <button
-                      onClick={() => handleMakeRole(user, "instructor")}
-                      disabled={user._id === disabledInstructorButtonId}
+                      onClick={() => handleMakeInstructor(user)}
+                      disabled={btnDisabledMap[user._id]}
                       className="btn btn-ghost bg-gray-500 text-white"
                     >
                       <FaUserShield></FaUserShield>Make Instructor
                     </button>
                   )}
-                </td>
-                <td>
-                  <button className="btn btn-ghost bg-red-600 text-white">
-                    <FaTrashAlt></FaTrashAlt>
-                  </button>
                 </td>
               </tr>
             ))}

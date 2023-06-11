@@ -3,7 +3,7 @@ import { imageUpload } from '../../../api/common';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { addStudents } from '../../../api/addStudents';
 
-const AddStudent = () => {
+const AddClass = () => {
   const {user} = useContext(AuthContext)
  
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
@@ -160,4 +160,4 @@ const AddStudent = () => {
   );
 };
 
-export default AddStudent;
+export default AddClass;

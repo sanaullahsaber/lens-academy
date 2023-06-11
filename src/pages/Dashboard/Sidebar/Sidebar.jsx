@@ -8,14 +8,27 @@ import { AiOutlineBars } from "react-icons/ai";
 import { BsFillHouseAddFill } from "react-icons/bs";
 import { FaChalkboardTeacher, FaHome, FaWallet } from "react-icons/fa";
 import useSelected from "../../../hooks/useSelected";
+
+
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
+
 const Sidebar = () => {
   const [bookedCourse] = useSelected();
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   // TODO load data from the server to have dynamic isAdmin based on Data
-  const isAdmin = true;
 
+  const [isAdmin] = useAdmin();
+  
+  console.log("This is admin dashboard dekisnaaaaaaaaaa", isAdmin);
+
+  const [isInstructor] = useInstructor();
+  console.log('This is Instructor dashboard', isInstructor);
+  
+  
+  
   const [isActive, setActive] = useState("false");
   const toggleHandler = (event) => {
     setToggle(event.target.checked);
@@ -98,7 +111,7 @@ const Sidebar = () => {
                 </label> */}
 
                 {/* Menu Links */}
-                {/* TODO: it is the instructor route after the making the student page then it will uncommment */}
+                {/* //TODO: it is the instructor route after the making the student page then it will uncommment */}
 
                 {/* Menu Links */}
                 <>
@@ -132,17 +145,45 @@ const Sidebar = () => {
                       >
                         <FaWallet className="w-5 h-5" />
 
-                        <span className="mx-4 font-medium">
-                          Manage Users
-                        </span>
+                        <span className="mx-4 font-medium">Manage Users</span>
                       </NavLink>
-                      
                     </div>
                   ) : isInstructor ? (
-                    <div>Instructor Content</div>
+                    <div>
+                      {/* isInstructor Menu Links */}
+                      <NavLink
+                        to="/dashboard/add-class"
+                        className={({ isActive }) =>
+                          `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                            isActive
+                              ? "bg-gray-300  text-gray-700"
+                              : "text-gray-600"
+                          }`
+                        }
+                      >
+                        <BsFillHouseAddFill className="w-5 h-5" />
+
+                        <span className="mx-4 font-medium">Add a Class</span>
+                      </NavLink>
+                      {/* Menu Links */}
+                      <NavLink
+                        to="/dashboard/my-classes"
+                        className={({ isActive }) =>
+                          `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                            isActive
+                              ? "bg-gray-300  text-gray-700"
+                              : "text-gray-600"
+                          }`
+                        }
+                      >
+                        <FaWallet className="w-5 h-5" />
+
+                        <span className="mx-4 font-medium">My Classes</span>
+                      </NavLink>
+                    </div>
                   ) : (
                     <div>
-                      {/* Menu Links */}
+                      {/* Student Links */}
                       <NavLink
                         to="/dashboard/my-selected-course"
                         className={({ isActive }) =>
