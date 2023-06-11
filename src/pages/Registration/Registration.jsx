@@ -1,16 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from "react";
 import loginAnimationLottie from "../../assets/LoginPage/132033-green-login.json";
 import Lottie from "lottie-react";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { AuthContext } from '../../providers/AuthProvider';
-import { saveUser } from '../../api/auth';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
+import { saveUser } from "../../api/auth";
 
 const Registration = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
-  const [name, setName] = useState("");
-  const [photo, setPhoto] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
@@ -19,7 +16,6 @@ const Registration = () => {
   const from = location.state?.from?.pathname || "/";
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
 
   const handleCreateAnAccount = (event) => {
     event.preventDefault();
@@ -63,8 +59,28 @@ const Registration = () => {
 
         updateUserProfile(name, photo)
           .then(() => {
-            saveUser(result.user)
-            navigate(from, { replace: true });
+            const saveUser = { name: name, email: email };
+            fetch(`${import.meta.env.VITE_API_URL}/users`, {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(saveUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  form.reset();
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User created successfully.",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate("/"); // Redirect to the home page
+                }
+              });
           })
           .catch((error) => {
             console.log(error);
@@ -110,7 +126,6 @@ const Registration = () => {
                 {/* photo field */}
                 <div className="form-control">
                   {" "}
-                  
                   <label className="label">
                     <span className="label-text">Photo URL</span>
                   </label>

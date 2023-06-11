@@ -7,10 +7,14 @@ import { FcSettings } from "react-icons/fc";
 import { AiOutlineBars } from "react-icons/ai";
 import { BsFillHouseAddFill } from "react-icons/bs";
 import { FaChalkboardTeacher, FaHome, FaWallet } from "react-icons/fa";
+import useSelected from "../../../hooks/useSelected";
 const Sidebar = () => {
+  const [bookedCourse] = useSelected();
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  // TODO load data from the server to have dynamic isAdmin based on Data
+  const isAdmin = true;
 
   const [isActive, setActive] = useState("false");
   const toggleHandler = (event) => {
@@ -95,73 +99,107 @@ const Sidebar = () => {
 
                 {/* Menu Links */}
                 {/* TODO: it is the instructor route after the making the student page then it will uncommment */}
-                {/* <NavLink
-                  to="/dashboard/add-student"
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
-                    }`
-                  }
-                >
-                  <BsFillHouseAddFill className="w-5 h-5" />
-
-                  <span className="mx-4 font-medium">Add Student</span>
-                </NavLink> */}
 
                 {/* Menu Links */}
-                {/* <NavLink
-                  to="/dashboard/home"
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
-                    }`
-                  }
-                >
-                  <BsFillHouseAddFill className="w-5 h-5" />
+                <>
+                  {isAdmin ? (
+                    <div>
+                      {/* Admin Menu Links */}
+                      <NavLink
+                        to="/dashboard/admin-manage-classes"
+                        className={({ isActive }) =>
+                          `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                            isActive
+                              ? "bg-gray-300  text-gray-700"
+                              : "text-gray-600"
+                          }`
+                        }
+                      >
+                        <BsFillHouseAddFill className="w-5 h-5" />
 
-                  <span className="mx-4 font-medium">Student Home</span>
-                </NavLink> */}
+                        <span className="mx-4 font-medium">Manage Classes</span>
+                      </NavLink>
+                      {/* Menu Links */}
+                      <NavLink
+                        to="/dashboard/admin-manage-users"
+                        className={({ isActive }) =>
+                          `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                            isActive
+                              ? "bg-gray-300  text-gray-700"
+                              : "text-gray-600"
+                          }`
+                        }
+                      >
+                        <FaWallet className="w-5 h-5" />
 
-                {/* Menu Links */}
-                <NavLink
-                  to="/dashboard/my-selected-course"
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
-                    }`
-                  }
-                >
-                  <BsFillHouseAddFill className="w-5 h-5" />
+                        <span className="mx-4 font-medium">
+                          Manage Users
+                        </span>
+                      </NavLink>
+                      
+                    </div>
+                  ) : isInstructor ? (
+                    <div>Instructor Content</div>
+                  ) : (
+                    <div>
+                      {/* Menu Links */}
+                      <NavLink
+                        to="/dashboard/my-selected-course"
+                        className={({ isActive }) =>
+                          `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                            isActive
+                              ? "bg-gray-300  text-gray-700"
+                              : "text-gray-600"
+                          }`
+                        }
+                      >
+                        <BsFillHouseAddFill className="w-5 h-5" />
 
-                  <span className="mx-4 font-medium">My Selected Classes</span>
-                </NavLink>
+                        <span className="mx-4 font-medium">
+                          My Selected Classes
+                        </span>
+                        <span className="badge inl bg-blue-400 h-7 w-7">
+                          +{bookedCourse?.length || 0}
+                        </span>
+                      </NavLink>
 
-                {/* Menu Links */}
-                <NavLink
-                  to="/dashboard/enrolled-classes"
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
-                    }`
-                  }
-                >
-                  <BsFillHouseAddFill className="w-5 h-5" />
+                      {/* Menu Links */}
+                      <NavLink
+                        to="/dashboard/enrolled-classes"
+                        className={({ isActive }) =>
+                          `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                            isActive
+                              ? "bg-gray-300  text-gray-700"
+                              : "text-gray-600"
+                          }`
+                        }
+                      >
+                        <BsFillHouseAddFill className="w-5 h-5" />
 
-                  <span className="mx-4 font-medium">My Enrolled Classes</span>
-                </NavLink>
-                {/* Menu Links */}
-                <NavLink
-                  to="/dashboard/payment-history"
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? "bg-gray-300  text-gray-700" : "text-gray-600"
-                    }`
-                  }
-                >
-                  <FaWallet className="w-5 h-5" />
+                        <span className="mx-4 font-medium">
+                          My Enrolled Classes
+                        </span>
+                      </NavLink>
+                      {/* Menu Links */}
+                      <NavLink
+                        to="/dashboard/payment-history"
+                        className={({ isActive }) =>
+                          `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+                            isActive
+                              ? "bg-gray-300  text-gray-700"
+                              : "text-gray-600"
+                          }`
+                        }
+                      >
+                        <FaWallet className="w-5 h-5" />
 
-                  <span className="mx-4 font-medium">My Payment History</span>
-                </NavLink>
+                        <span className="mx-4 font-medium">
+                          My Payment History
+                        </span>
+                      </NavLink>
+                    </div>
+                  )}
+                </>
               </>
             </nav>
           </div>

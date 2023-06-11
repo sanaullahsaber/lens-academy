@@ -56,22 +56,30 @@ const Login = () => {
           timer: 1500,
         });
         console.log(error);
-      })
-
-  }
+      });
+  };
 
   const handleGoogleSignIn = () => {
-    signInWithGoogle()
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        saveUser(result.user);
-        navigate(from, { replace: true });
+    signInWithGoogle().then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+
+      const saveUser = {
+        name: loggedUser.displayName,
+        email: loggedUser.email,
+      };
+      fetch(`${import.meta.env.VITE_API_URL}/users`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(saveUser),
       })
-      .catch((error) => {
-        console.log(error);
-        toast.error(err.message);
-    })
+        .then((res) => res.json())
+        .then(() => {
+          navigate(from, { replace: true }); // Redirect to the home page
+        });
+    });
   };
 
   return (
@@ -123,11 +131,10 @@ const Login = () => {
                   />
                 </div>
                 <div className="my-2">
-
-                <span className="font-semibold">Don't have an account?</span>
-                <Link to="/signup" className="text-[#487eb0] font-semibold ">
-                  Create an account
-                </Link>
+                  <span className="font-semibold">Don't have an account?</span>
+                  <Link to="/signup" className="text-[#487eb0] font-semibold ">
+                    Create an account
+                  </Link>
                 </div>
               </form>
               <div className="divider">OR</div>
@@ -143,6 +150,5 @@ const Login = () => {
     </div>
   );
 };
-// 76-3 Firebase Project Setup For Bistro Boss
 
 export default Login;

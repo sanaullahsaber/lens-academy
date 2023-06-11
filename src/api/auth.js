@@ -1,6 +1,7 @@
 // save a user to database
 export const saveUser = (user) => {
   const currentUser = {
+    name: user.name,
     email: user.email,
   };
   fetch(`${import.meta.env.VITE_API_URL}/users/${user?.email}`, {

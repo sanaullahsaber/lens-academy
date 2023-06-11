@@ -8,6 +8,9 @@ import InstructorsPage from "../pages/InstructorsPage/InstructorsPage";
 import Dashboard from "../Layout/Dashboard";
 import AddStudent from "../pages/Dashboard/AddStudent/AddStudent";
 import MySelectedCourse from "../pages/Dashboard/MySelectedCourse/MySelectedCourse";
+import Payment from "../pages/Dashboard/MySelectedCourse/Payment";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+
 
 const router = createBrowserRouter([
   {
@@ -43,7 +46,15 @@ const router = createBrowserRouter([
       },
       {
         path: "my-selected-course",
-        element: <MySelectedCourse></MySelectedCourse> 
+        element: <MySelectedCourse></MySelectedCourse>,
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
+      },
+      {
+        path: "admin-manage-users",
+        element: <AllUsers></AllUsers>,
       },
     ],
   },

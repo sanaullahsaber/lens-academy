@@ -2,6 +2,7 @@ import React from "react";
 import useSelected from "../../../hooks/useSelected";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MySelectedCourse = () => {
   const [bookedCourse, refetch] = useSelected();
@@ -78,12 +79,14 @@ const MySelectedCourse = () => {
                   </button>
                 </td>
                 <td>
-                  <button
-                    onClick={() => handleDelete(item)}
-                    className="btn btn-ghost bg-blue-400  text-white"
-                  >
-                    Pay
-                  </button>
+                  <Link to="/dashboard/payment">
+                    <button
+                      onClick={() => handlePay(item)}
+                      className="btn btn-ghost bg-blue-400  text-white"
+                    >
+                      Pay
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}
