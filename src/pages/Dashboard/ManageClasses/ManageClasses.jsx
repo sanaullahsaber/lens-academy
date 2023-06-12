@@ -26,7 +26,18 @@ const ManageClasses = () => {
   }
 
   // denied
- 
+  const handleDeny = (user) => {
+    fetch(`${import.meta.env.VITE_API_URL}/addstudents/deny/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          toast.success("Class denied successfully");
+        }
+      });
+  };
 
 
   return (
