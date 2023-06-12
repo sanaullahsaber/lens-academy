@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
@@ -10,8 +10,15 @@ const ManageClasses = () => {
     return res.data;
   });
 
+  const [btnDisabledMap, setBtnDisabledMap] = useState({});
+
+
   // Approve 
   const handleApprove = (user) => {
+     setBtnDisabledMap((prevBtnDisabledMap) => ({
+       ...prevBtnDisabledMap,
+       [user._id]: true,
+     }));
     fetch(`${import.meta.env.VITE_API_URL}/addstudents/approve/${user._id}`, {
       method: "PATCH"
     })
@@ -20,13 +27,21 @@ const ManageClasses = () => {
         if (data.modifiedCount) {
           refetch();
           toast.success("Class Approve successfully");
-       }
+        }
+        setBtnDisabledMap((prevBtnDisabledMap) => ({
+          ...prevBtnDisabledMap,
+          [user._id]: false,
+        }));
     })
 
   }
 
   // denied
   const handleDeny = (user) => {
+    setBtnDisabledMap((prevBtnDisabledMap) => ({
+      ...prevBtnDisabledMap,
+      [user._id]: true,
+    }));
     fetch(`${import.meta.env.VITE_API_URL}/addstudents/deny/${user._id}`, {
       method: "PATCH",
     })
@@ -36,6 +51,10 @@ const ManageClasses = () => {
           refetch();
           toast.success("Class denied successfully");
         }
+         setBtnDisabledMap((prevBtnDisabledMap) => ({
+           ...prevBtnDisabledMap,
+           [user._id]: false,
+         }));
       });
   };
 
@@ -103,20 +122,37 @@ const ManageClasses = () => {
                 <td>
                   <div className="flex-col w-1/2">
                     <div className="mb-2">
-                      <button
-                        onClick={() => handleApprove(user)}
-                        className="btn  btn-warning  btn-xs"
-                      >
-                        approved
-                      </button>
+                      {user.status === "approved" ? (
+                        <button className="btn btn-warning btn-xs" disabled>
+                          approved
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => handleApprove(user)}
+                          disabled={btnDisabledMap[user._id]}
+                          className="btn  btn-warning  btn-xs"
+                        >
+                          approved
+                        </button>
+                      )}
                     </div>
                     <div className="mb-2  w-full">
-                      <button
-                        onClick={() => handleDeny(user)}
-                        className="btn btn-error  btn-xs"
-                      >
-                        denied
-                      </button>
+                      {user.status === "denied" ? (
+                        <button
+                          className="btn btn-warning w-20 btn-xs"
+                          disabled
+                        >
+                          denied
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => handleDeny(user)}
+                          disabled={btnDisabledMap[user._id]}
+                          className="btn btn-error w-20  btn-xs"
+                        >
+                          denied
+                        </button>
+                      )}
                     </div>
                     <div className="mb-2">
                       <button className="btn btn-success btn-xs">
