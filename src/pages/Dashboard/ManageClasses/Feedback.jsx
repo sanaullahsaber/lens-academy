@@ -18,7 +18,7 @@ const Feedback = () => {
         .patch(`/addstudents/${user._id}?status=denied`, { feedback: value })
         .then((res) => {
           if (res.data.modifiedCount > 0) {
-            toast.success(`${user.name} denied`);
+            toast.success(`${user.className} denied`);
             navigate("/dashboard/admin-manage-classes", { replace: true });
           }
         })
@@ -29,9 +29,9 @@ const Feedback = () => {
   };
 
   return (
-    <div className="mt-40 flex justify-center items-center">
+    <div className="p-10 ">
       <h1 className="uppercase text-3xl text-center">
-        <span className="text-yellow-600">{user.name}</span>
+        <span className="text-yellow-600">{user.className}</span>
       </h1>
       <form onSubmit={(event) => handleFeedback(event, user)}>
         <textarea
@@ -39,7 +39,9 @@ const Feedback = () => {
           className="w-full border-black border-2 h-60"
           placeholder="Feedback"
         />
-        <button type="submit" className="btn btn-error w-full">Send</button>
+        <button type="submit" className="btn btn-error w-full">
+          Send
+        </button>
       </form>
     </div>
   );
