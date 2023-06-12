@@ -13,7 +13,7 @@ import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import PrivateRoute from "./PrivateRoute";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 import AdminRoute from "./AdminRoute";
-
+import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 
 const router = createBrowserRouter([
   {
@@ -50,12 +50,30 @@ const router = createBrowserRouter([
       // admin routes
       {
         path: "admin-manage-users",
-        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
       },
       {
         path: "admin-manage-classes",
-        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+        element: (
+          <AdminRoute>
+            <ManageClasses></ManageClasses>
+          </AdminRoute>
+        ),
       },
+      // Instructor routes
+      {
+        path: "add-class",
+        element: <AddClass></AddClass>,
+      },
+      {
+        path: "my-classes",
+        element: <MyClasses></MyClasses>
+      },
+      // by default  students route
       {
         path: "my-selected-course",
         element: <MySelectedCourse></MySelectedCourse>,
@@ -63,11 +81,6 @@ const router = createBrowserRouter([
       {
         path: "payment",
         element: <Payment></Payment>,
-      },
-
-      {
-        path: "add-class",
-        element: <AddClass></AddClass>,
       },
     ],
   },

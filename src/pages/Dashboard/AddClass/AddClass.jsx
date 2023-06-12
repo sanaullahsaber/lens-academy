@@ -1,12 +1,16 @@
-import React, { useContext, useState } from 'react';
-import { imageUpload } from '../../../api/common';
-import { AuthContext } from '../../../providers/AuthProvider';
-import { addStudents } from '../../../api/addStudents';
+import React, { useContext, useState, useRef } from "react";
+import { imageUpload } from "../../../api/common";
+import { AuthContext } from "../../../providers/AuthProvider";
+import { addStudents } from "../../../api/addStudents";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const AddClass = () => {
-  const {user} = useContext(AuthContext)
- 
+  const { user } = useContext(AuthContext);
+  // const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
+  const formRef = useRef(null);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -18,9 +22,11 @@ const AddClass = () => {
     const availableSeats = form.availableSeats.value;
     const price = form.price.value;
 
-    // upload image
+    setLoading(true);
+
+    // Upload image
     imageUpload(image)
-      .then(data => {
+      .then((data) => {
         const studentData = {
           className,
           instructorName,
@@ -35,30 +41,36 @@ const AddClass = () => {
           },
         };
 
-        // post room data to server
+        // Post room data to server
         addStudents(studentData)
-        .then(data => console.log(data))
-        .catch(err =>console.log(err))
-
-        console.log(studentData);
+          .then((data) => {
+            setLoading(false);
+            toast.success("Class added successfully");
+            formRef.current.reset(); // Reset the form
+            // navigate(""); 
+          })
+          .catch((error) => {
+            setLoading(false);
+            toast.error("Failed to add class: " + error.message);
+          });
       })
-      .catch(err => console.log(err))
-
-    // console.log(className,image,instructorName,instructorEmail,availableSeats,price);
-  }
+      .catch((error) => {
+        setLoading(false);
+        toast.error("Failed to upload image: " + error.message);
+      });
+  };
 
   const handleImageChange = (image) => {
     console.log(image);
     setUploadButtonText(image.name);
   };
 
-
   return (
     <div>
       <div className="min-h-screen flex items-center justify-center">
         <div className="w-9/12 mx-auto p-8 bg-white shadow-lg rounded-lg">
           <h2 className="text-2xl font-bold mb-4">Create Class</h2>
-          <form onSubmit={handleFormSubmit}>
+          <form ref={formRef} onSubmit={handleFormSubmit}>
             <div className="mb-4">
               <label htmlFor="className" className="block font-semibold">
                 Class Name
@@ -74,7 +86,10 @@ const AddClass = () => {
 
             <div className="mb-4">
               <div className="  bg-white w-full  m-auto rounded-lg">
-                <label htmlFor="image"  className="block font-semibold"> Class Image</label>
+                <label htmlFor="image" className="block font-semibold">
+                  {" "}
+                  Class Image
+                </label>
                 <div className="file_upload px-5 py-3 relative border border-gray-300 rounded-lg">
                   <div className="flex flex-col w-max  text-center">
                     <label>
@@ -107,6 +122,8 @@ const AddClass = () => {
                 id="instructorName"
                 name="instructorName"
                 className="w-full px-4 py-2 border rounded bg-gray-200"
+                value={user?.displayName}
+                readOnly
               />
             </div>
             <div className="mb-4">
@@ -118,6 +135,8 @@ const AddClass = () => {
                 id="instructorEmail"
                 name="instructorEmail"
                 className="w-full px-4 py-2 border rounded bg-gray-200"
+                value={user?.email}
+                readOnly
               />
             </div>
             <div className="mb-4">
@@ -144,14 +163,13 @@ const AddClass = () => {
                 required
               />
             </div>
-            <div className='flex justify-center items-center'>
-
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-            >
-              Add Class
-            </button>
+            <div className="flex justify-center items-center">
+              <input
+                type="submit"
+                value={loading ? "Adding Class..." : "Add Class"}
+                disabled={loading}
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+              />
             </div>
           </form>
         </div>

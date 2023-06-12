@@ -6,8 +6,15 @@ export const addStudents = async (studentData) => {
       "content-type": "application/json",
     },
     body: JSON.stringify(studentData),
-  }); 
+  });
 
   const data = await response.json();
   return data;
 };
+
+// get All Students
+export const countStudent = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/addstudents`)
+  const data = await response.json()
+  return data;
+}
