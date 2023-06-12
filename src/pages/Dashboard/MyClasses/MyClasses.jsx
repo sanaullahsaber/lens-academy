@@ -45,6 +45,7 @@ const MyClasses = () => {
               <th>Available seats</th>
               <th>Price</th>
               <th>Status</th>
+              <th>Feedback</th>
             </tr>
           </thead>
           <tbody>
@@ -93,7 +94,6 @@ const MyClasses = () => {
                 </td>
               </tr>
             ))}
-   
           </tbody>
         </table>
       </div>

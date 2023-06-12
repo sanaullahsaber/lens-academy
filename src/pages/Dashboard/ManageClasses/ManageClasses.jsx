@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const ManageClasses = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -12,18 +13,19 @@ const ManageClasses = () => {
 
   const [btnDisabledMap, setBtnDisabledMap] = useState({});
 
+  const navigate = useNavigate();
 
-  // Approve 
+  // Approve
   const handleApprove = (user) => {
-     setBtnDisabledMap((prevBtnDisabledMap) => ({
-       ...prevBtnDisabledMap,
-       [user._id]: true,
-     }));
+    setBtnDisabledMap((prevBtnDisabledMap) => ({
+      ...prevBtnDisabledMap,
+      [user._id]: true,
+    }));
     fetch(`${import.meta.env.VITE_API_URL}/addstudents/approve/${user._id}`, {
-      method: "PATCH"
+      method: "PATCH",
     })
       .then((res) => res.json())
-      .then(data => {
+      .then((data) => {
         if (data.modifiedCount) {
           refetch();
           toast.success("Class Approve successfully");
@@ -32,9 +34,8 @@ const ManageClasses = () => {
           ...prevBtnDisabledMap,
           [user._id]: false,
         }));
-    })
-
-  }
+      });
+  };
 
   // denied
   const handleDeny = (user) => {
@@ -50,14 +51,24 @@ const ManageClasses = () => {
         if (data.modifiedCount) {
           refetch();
           toast.success("Class denied successfully");
+           navigate("/dashboard/feedBack", {
+             state: { user },
+             replace: true,
+           });
         }
-         setBtnDisabledMap((prevBtnDisabledMap) => ({
-           ...prevBtnDisabledMap,
-           [user._id]: false,
-         }));
+        setBtnDisabledMap((prevBtnDisabledMap) => ({
+          ...prevBtnDisabledMap,
+          [user._id]: false,
+        }));
       });
   };
 
+  const handle_Deny = (user) => {
+    navigate("/dashboard/feedBack", {
+      state: { user },
+      replace: true,
+    });
+  };
 
   return (
     <div>
@@ -121,6 +132,7 @@ const ManageClasses = () => {
                 </td>
                 <td>
                   <div className="flex-col w-1/2">
+                    {/* handle Approve */}
                     <div className="mb-2">
                       {user.status === "approved" ? (
                         <button className="btn btn-warning btn-xs" disabled>
@@ -136,13 +148,14 @@ const ManageClasses = () => {
                         </button>
                       )}
                     </div>
+                    {/* Handle Deny */}
                     <div className="mb-2  w-full">
                       {user.status === "denied" ? (
                         <button
                           className="btn btn-warning w-20 btn-xs"
                           disabled
                         >
-                          denied
+                          Denied
                         </button>
                       ) : (
                         <button
@@ -150,14 +163,9 @@ const ManageClasses = () => {
                           disabled={btnDisabledMap[user._id]}
                           className="btn btn-error w-20  btn-xs"
                         >
-                          denied
+                          Denied
                         </button>
                       )}
-                    </div>
-                    <div className="mb-2">
-                      <button className="btn btn-success btn-xs">
-                        feedback
-                      </button>
                     </div>
                   </div>
                 </td>

@@ -11,8 +11,6 @@ const AllUsers = () => {
     return res.data;
   });
 
-  
-
   const [btnDisabledMap, setBtnDisabledMap] = useState({});
 
   const handleMakeAdmin = (user) => {
@@ -98,7 +96,12 @@ const AllUsers = () => {
                 <td>{user.role || "student"}</td>
                 <td>
                   {user.role === "admin" ? (
-                    "admin"
+                    <button
+                      disabled
+                      className="btn btn-ghost bg-gray-500 text-white"
+                    >
+                      <FaUserShield></FaUserShield>Make Admin
+                    </button>
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
@@ -111,7 +114,12 @@ const AllUsers = () => {
                 </td>
                 <td>
                   {user.role === "instructor" ? (
-                    "instructor"
+                    <button
+                      disabled
+                      className="btn btn-ghost bg-gray-500 text-white"
+                    >
+                      <FaUserShield></FaUserShield>Make Instructor
+                    </button>
                   ) : (
                     <button
                       onClick={() => handleMakeInstructor(user)}
