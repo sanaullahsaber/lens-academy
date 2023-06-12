@@ -93,7 +93,7 @@ const MyClasses = () => {
                 </td>
               </tr>
             ))}
-            {/* row 2 */}
+   
           </tbody>
         </table>
       </div>

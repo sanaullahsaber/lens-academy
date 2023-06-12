@@ -11,6 +11,8 @@ const AllUsers = () => {
     return res.data;
   });
 
+  
+
   const [btnDisabledMap, setBtnDisabledMap] = useState({});
 
   const handleMakeAdmin = (user) => {
