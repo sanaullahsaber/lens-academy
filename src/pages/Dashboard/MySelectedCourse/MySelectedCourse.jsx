@@ -66,9 +66,9 @@ const MySelectedCourse = () => {
                     </div>
                   </div>
                 </td>
-                <td>{item.title}</td>
-                <td className="text-start">{item.instructor}</td>
-                <td className="text-start">{item.seats}</td>
+                <td>{item.className}</td>
+                <td className="text-start">{item.instructor.name}</td>
+                <td className="text-start">{item.availableSeats}</td>
                 <td className="text-start">${item.price}</td>
                 <td>
                   <button

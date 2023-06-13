@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { imageUpload } from "../../../api/common";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { addStudents } from "../../../api/addStudents";
@@ -11,6 +11,13 @@ const AddClass = () => {
   const [loading, setLoading] = useState(false);
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
   const formRef = useRef(null);
+
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login"); // Redirect to login page if user is not authenticated
+    }
+  }, [user, navigate]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -31,7 +38,7 @@ const AddClass = () => {
           className,
           instructorName,
           instructorEmail,
-          availableSeats,
+          availableSeats: parseFloat(availableSeats),
           price: parseFloat(price),
           image: data.data.display_url,
           instructor: {

@@ -21,6 +21,7 @@ const ManageClasses = () => {
       ...prevBtnDisabledMap,
       [user._id]: true,
     }));
+    
     fetch(`${import.meta.env.VITE_API_URL}/addstudents/approve/${user._id}`, {
       method: "PATCH",
     })
