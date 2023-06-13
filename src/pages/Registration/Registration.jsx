@@ -5,9 +5,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import { saveUser } from "../../api/auth";
+import { FcGoogle } from "react-icons/fc";
 
 const Registration = () => {
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, signInWithGoogle } =
+    useContext(AuthContext);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
@@ -90,6 +92,30 @@ const Registration = () => {
         console.log(error);
       });
   };
+
+
+   const handleGoogleSignIn = () => {
+     signInWithGoogle().then((result) => {
+       const loggedUser = result.user;
+       console.log(loggedUser);
+
+       const saveUser = {
+         name: loggedUser.displayName,
+         email: loggedUser.email,
+       };
+       fetch(`${import.meta.env.VITE_API_URL}/users`, {
+         method: "POST",
+         headers: {
+           "content-type": "application/json",
+         },
+         body: JSON.stringify(saveUser),
+       })
+         .then((res) => res.json())
+         .then(() => {
+           navigate(from, { replace: true }); // Redirect to the home page
+         });
+     });
+   };
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -201,6 +227,13 @@ const Registration = () => {
                   </Link>
                 </div>
               </form>
+              {/* social login */}
+              <div className="divider">OR</div>
+              <div className="text-center">
+                <button onClick={handleGoogleSignIn} className="btn w-full">
+                  <FcGoogle className="w-10 h-8"></FcGoogle>Continue with Google
+                </button>
+              </div>
               <p className="text-error">{error}</p>
               <p className="text-success">{success}</p>
             </div>
