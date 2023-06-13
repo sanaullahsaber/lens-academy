@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import loginAnimationLottie from "../../assets/LoginPage/132033-green-login.json";
 import Lottie from "lottie-react";
 import { FcGoogle } from "react-icons/fc";
@@ -6,12 +6,16 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { saveUser } from "../../api/auth";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+
 const Login = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   console.log("login page location", location);
   const from = location.state?.from?.pathname || "/";
+  // start new update right now
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -116,12 +120,24 @@ const Login = () => {
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    className="input input-bordered"
-                  />
+                  <div className="relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="password"
+                      className="input input-bordered pr-12"
+                    />
+                    <span
+                      className="text-[#487eb0] cursor-pointer absolute top-1/2 right-2 transform -translate-y-1/2"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <AiOutlineEyeInvisible size={20} />
+                      ) : (
+                        <AiOutlineEye size={20} />
+                      )}
+                    </span>
+                  </div>
                 </div>
                 <div className="form-control mt-6">
                   <input

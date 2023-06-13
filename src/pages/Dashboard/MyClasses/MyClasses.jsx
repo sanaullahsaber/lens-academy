@@ -28,14 +28,6 @@ const MyClasses = () => {
   //     });
   // }, []);
 
-   const [selectedUser, setSelectedUser] = useState(null);
-
-   const handleShowFeedback = (user) => {
-     setSelectedUser(user);
-     window.my_modal_1.showModal();
-   };
-
-
   return (
     <div>
       <h3 className="text-3xl font-semibold my-4">
@@ -101,43 +93,13 @@ const MyClasses = () => {
                   </div>
                 </td>
                 <td>
-                  <div className="mb-2">
-                    {user.feedback ? ( // Check if feedback exists
-                      <button className="btn btn-error btn-xs">
-                        <label
-                          onClick={() => handleShowFeedback(user)}
-                          className=""
-                        >
-                          Show Feedback
-                        </label>
-                      </button>
-                    ) : (
-                      <button className="btn btn-success btn-xs" disabled>
-                        Show Feedback
-                      </button>
-                    )}
-                  </div>
+                  <div className="font-bold text-red-600">{user.feedback}</div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      {/* Open the modal using ID.showModal() method */}
-      <dialog id="my_modal_1" className="modal">
-        <form method="dialog" className="modal-box">
-          {selectedUser && (
-            <>
-              <h3 className="font-bold text-lg">Course Name: {selectedUser.className}</h3>
-              <p className="py-4"><strong>Feedback by Admin Why Denied :</strong> {selectedUser.feedback}</p>
-            </>
-          )}
-          <div className="modal-action">
-            {/* if there is a button in form, it will close the modal */}
-            <button className="btn">Close</button>
-          </div>
-        </form>
-      </dialog>
     </div>
   );
 };

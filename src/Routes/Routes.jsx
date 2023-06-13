@@ -67,7 +67,7 @@ const router = createBrowserRouter([
       },
       {
         path: "feedBack",
-        element: <Feedback></Feedback>
+        element: <AdminRoute><Feedback></Feedback></AdminRoute>
       },
       // Instructor routes
       {
