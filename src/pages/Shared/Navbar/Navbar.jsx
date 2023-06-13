@@ -18,7 +18,7 @@ const Navbar = () => {
         <Link to="/instructors">Instructors</Link>
       </li>
       <li className="text-blue-900 text-xl font-semibold">
-        <Link to="/"> Classes</Link>
+        <Link to="/class-page"> Classes</Link>
       </li>
       {user ? (
         <li className="text-blue-900 text-xl font-semibold">

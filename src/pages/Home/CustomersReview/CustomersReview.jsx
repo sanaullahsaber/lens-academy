@@ -16,7 +16,7 @@ const CustomersReview = () => {
       title: "Outstanding Photography Courses",
       content:
         "The photography courses offered by this school are outstanding. The curriculum covers both technical and artistic aspects. The instructors are experienced professionals who are enthusiastic about teaching and helping students improve. The school organizes regular photo walks and workshops, providing practical application opportunities. I am satisfied with the quality of education and progress I made during my time at this photography school.",
-      rating: "★★★★★",
+      rating: "★★★★",
     },
     {
       id: 11,
@@ -30,7 +30,7 @@ const CustomersReview = () => {
       title: "Top-Notch Photography Instruction",
       content:
         "The photography instruction at this school is top-notch. The instructors have a deep understanding of the art and science of photography. They provide personalized attention and guidance, helping students develop their unique style and vision. The school offers advanced courses and masterclasses for further refinement. I am grateful for the education and mentorship I received at this photography school.",
-      rating: "★★★★★",
+      rating: "★★★★",
     },
     {
       id: 13,
@@ -44,7 +44,7 @@ const CustomersReview = () => {
       title: "Comprehensive Photography Program",
       content:
         "The photography program offered by this school is comprehensive and covers a wide range of topics. From the fundamentals of exposure and composition to advanced lighting techniques and post-processing, the curriculum provides a solid foundation. The school offers specialized courses in genres such as portrait, landscape, and documentary photography. The program allows students to progress at their own pace while challenging them to continuously improve.",
-      rating: "★★★★★",
+      rating: "★★★★",
     },
     {
       id: 15,
@@ -58,7 +58,7 @@ const CustomersReview = () => {
       title: "Highly Recommended Photography School",
       content:
         "I highly recommend this photography school to anyone passionate about photography. The instructors are knowledgeable and deeply invested in the success of their students. They ensure students receive a well-rounded education and gain practical experience. The school provides opportunities for growth, including internships and collaborations. The skills and connections I developed have been invaluable in launching my career as a photographer.",
-      rating: "★★★★★",
+      rating: "★★★★",
     },
   ];
 
