@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 
 const AddClass = () => {
   const { user } = useContext(AuthContext);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
   const formRef = useRef(null);

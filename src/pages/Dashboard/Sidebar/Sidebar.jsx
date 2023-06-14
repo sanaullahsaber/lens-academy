@@ -180,20 +180,7 @@ const Sidebar = () => {
 
                         <span className="mx-4 font-medium">My Classes</span>
                       </NavLink>
-                      <NavLink
-                        to="/dashboard/total-enrolled"
-                        className={({ isActive }) =>
-                          `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                            isActive
-                              ? "bg-gray-300  text-gray-700"
-                              : "text-gray-600"
-                          }`
-                        }
-                      >
-                        <FaWallet className="w-5 h-5" />
-
-                        <span className="mx-4 font-medium">Total Enrolled</span>
-                      </NavLink>
+                     
                     </div>
                   ) : (
                     <div>
@@ -220,7 +207,7 @@ const Sidebar = () => {
 
                       {/* Menu Links */}
                       <NavLink
-                        to="/dashboard/enrolled-classes"
+                        to="/dashboard/payment-history"
                         className={({ isActive }) =>
                           `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
                             isActive
@@ -232,12 +219,12 @@ const Sidebar = () => {
                         <BsFillHouseAddFill className="w-5 h-5" />
 
                         <span className="mx-4 font-medium">
-                          My Enrolled Classes
+                          My Payment History
                         </span>
                       </NavLink>
                       {/* Menu Links */}
                       <NavLink
-                        to="/dashboard/payment-history"
+                        to="/dashboard/enrolled-classes"
                         className={({ isActive }) =>
                           `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
                             isActive
@@ -249,7 +236,7 @@ const Sidebar = () => {
                         <FaWallet className="w-5 h-5" />
 
                         <span className="mx-4 font-medium">
-                          My Payment History
+                          My Enrolled Classes
                         </span>
                       </NavLink>
                     </div>

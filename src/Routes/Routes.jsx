@@ -17,6 +17,10 @@ import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 import Feedback from "../pages/Dashboard/ManageClasses/Feedback";
 import ClassPage from "../pages/ClassPage/ClassPage";
 import Payment from "../pages/Dashboard/MySelectedCourse/Payment";
+import MyEnrolledClassess from "../pages/Dashboard/MyEnrolledClassess/MyEnrolledClassess";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+
+
 
 const router = createBrowserRouter([
   {
@@ -83,22 +87,54 @@ const router = createBrowserRouter([
       // Instructor routes
       {
         path: "add-class",
-        element: <AddClass></AddClass>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AddClass></AddClass>
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-classes",
-        element: <MyClasses></MyClasses>,
+        element: (
+          <PrivateRoute>
+            <MyClasses></MyClasses>
+          </PrivateRoute>
+        ),
       },
+    
       // by default  students route
       {
         path: "my-selected-course",
-        element: <MySelectedCourse></MySelectedCourse>,
+        element: (
+          <PrivateRoute>
+            <MySelectedCourse></MySelectedCourse>
+          </PrivateRoute>
+        ),
       },
       {
         path: "payment/:id",
-        element: <Payment></Payment>,
-        // loader: ({ params }) =>
-        //   fetch(`${import.meta.env.VITE_API_URL}/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <Payment></Payment>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "enrolled-classes",
+        element: (
+          <PrivateRoute>
+            <MyEnrolledClassess></MyEnrolledClassess>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "payment-history",
+        element: (
+          <PrivateRoute>
+            <PaymentHistory></PaymentHistory>
+          </PrivateRoute>
+        ),
       },
     ],
   },
