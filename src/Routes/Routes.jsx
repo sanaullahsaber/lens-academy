@@ -7,7 +7,7 @@ import Home from "../pages/Home/Home/Home";
 import InstructorsPage from "../pages/InstructorsPage/InstructorsPage";
 import Dashboard from "../Layout/Dashboard";
 import MySelectedCourse from "../pages/Dashboard/MySelectedCourse/MySelectedCourse";
-import Payment from "../pages/Dashboard/MySelectedCourse/Payment";
+
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import PrivateRoute from "./PrivateRoute";
@@ -16,6 +16,7 @@ import AdminRoute from "./AdminRoute";
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 import Feedback from "../pages/Dashboard/ManageClasses/Feedback";
 import ClassPage from "../pages/ClassPage/ClassPage";
+import Payment from "../pages/Dashboard/MySelectedCourse/Payment";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "class-page",
-        element: <ClassPage></ClassPage>
+        element: <ClassPage></ClassPage>,
       },
 
       {
@@ -73,7 +74,11 @@ const router = createBrowserRouter([
       },
       {
         path: "feedBack",
-        element: <AdminRoute><Feedback></Feedback></AdminRoute>
+        element: (
+          <AdminRoute>
+            <Feedback></Feedback>
+          </AdminRoute>
+        ),
       },
       // Instructor routes
       {
@@ -82,7 +87,7 @@ const router = createBrowserRouter([
       },
       {
         path: "my-classes",
-        element: <MyClasses></MyClasses>
+        element: <MyClasses></MyClasses>,
       },
       // by default  students route
       {
@@ -90,8 +95,10 @@ const router = createBrowserRouter([
         element: <MySelectedCourse></MySelectedCourse>,
       },
       {
-        path: "payment",
+        path: "payment/:id",
         element: <Payment></Payment>,
+        // loader: ({ params }) =>
+        //   fetch(`${import.meta.env.VITE_API_URL}/${params.id}`),
       },
     ],
   },

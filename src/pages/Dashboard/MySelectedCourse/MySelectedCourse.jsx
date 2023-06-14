@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import useSelected from "../../../hooks/useSelected";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutForm from "../From/CheckoutForm";
 import { Link } from "react-router-dom";
+const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
 const MySelectedCourse = () => {
   const [bookedCourse, refetch] = useSelected();
   console.log(bookedCourse);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   const handleDelete = (item) => {
     Swal.fire({
@@ -79,11 +84,8 @@ const MySelectedCourse = () => {
                   </button>
                 </td>
                 <td>
-                  <Link to="/dashboard/payment">
-                    <button
-                      onClick={() => handlePay(item)}
-                      className="btn btn-ghost bg-blue-400  text-white"
-                    >
+                  <Link to={`/dashboard/payment/${item._id}`}>
+                    <button className="btn btn-ghost bg-blue-400  text-white">
                       Pay
                     </button>
                   </Link>
@@ -93,6 +95,8 @@ const MySelectedCourse = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Open the modal using ID.showModal() method */}
     </div>
   );
 };

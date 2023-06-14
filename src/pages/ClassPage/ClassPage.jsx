@@ -1,5 +1,4 @@
-import React, {  useEffect, useState } from "react";
-
+import React, { useEffect, useState } from "react";
 
 import ClassPageCard from "./ClassPageCard";
 
@@ -13,7 +12,6 @@ const ClassPage = () => {
     fetch(`${import.meta.env.VITE_API_URL}/addstudents`)
       .then((res) => res.json())
       .then((data) => {
- 
         setApproveClasses(data), setLoading(false);
       });
   }, []);
@@ -23,11 +21,11 @@ const ClassPage = () => {
   );
   if (loading) {
     return (
-      <span className="loading loading-spinner loading-lg text-info"></span>
+      <div className=" flex justify-center items-center  ">
+        <span className="loading loading-spinner loading-lg text-info"></span>
+      </div>
     );
   }
-
- 
 
   if (approve) {
     return (

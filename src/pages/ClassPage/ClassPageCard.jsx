@@ -13,16 +13,10 @@ const ClassPageCard = ({ course }) => {
   // check admin
   const [isAdmin] = useAdmin();
   console.log("Admin aitaaaaaaaaaaaaaaaaaaaaaaa", isAdmin);
-  
 
   // check Instructor
   const [isInstructor] = useInstructor();
   console.log("instructor aitaaaaaaaaaaaaaaaaaaaaa", isInstructor);
-  
-
-  
-
-
 
   const { user } = useContext(AuthContext);
   const [, refetch] = useSelected();
@@ -86,7 +80,11 @@ const ClassPageCard = ({ course }) => {
 
   return (
     <div className=" pt-20">
-      <div className="card w-96 h-full bg-base-100 shadow-xl">
+      <div
+        className={`card w-96 h-full shadow-xl ${
+          availableSeats === 0 ? "bg-red-500" : "bg-base-100"
+        }`}
+      >
         <figure>
           <img className="w-full h-80" src={image} alt="Shoes" />
         </figure>
