@@ -13,6 +13,8 @@ import useSelected from "../../../hooks/useSelected";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructor from "../../../hooks/useInstructor";
 
+
+
 const Sidebar = () => {
   const [bookedCourse] = useSelected();
   const navigate = useNavigate();

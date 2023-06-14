@@ -1,6 +1,6 @@
 ## Live Link
 
-Hosted in Firebase -> [Lens Academy]()
+Hosted in Firebase -> [Lens Academy](https://lens-academy-59553.web.app/)
 
 ## Lens Academy Website Features
 
