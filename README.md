@@ -71,3 +71,5 @@ Hosted in Firebase -> [Lens Academy](https://lens-academy-59553.web.app/)
 - Authentication: JWT (JSON Web Tokens)
 
 - Data Fetching: Axios, React Query
+
+finish 
