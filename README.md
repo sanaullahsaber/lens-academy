@@ -72,4 +72,3 @@ Hosted in Firebase -> [Lens Academy](https://lens-academy-59553.web.app/)
 
 - Data Fetching: Axios, React Query
 
-finish 
